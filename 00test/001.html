@@ -1,0 +1,98 @@
+<!--**
+ * Created by Tyler on 2017/09/05 22:57.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>float对容器的破坏性</title>
+    <link rel="stylesheet" href="../lib/TylerCss/06D_PO_FL.css">
+    <style>
+        .outer{
+            /*width: 200px;*/
+            /*height: 100px;*/
+            background-color: #ff14f9;
+        }
+        .inner{
+            width: 120px;
+            height: 40px;
+            /* 以下对容器都具有破坏性 */
+            position: absolute;
+            /*float: left;*/
+
+            background-color: #078513;
+        }
+
+        .one{
+            margin-top: 50px;
+            border: 2px solid #0099ff;
+            width: 500px;
+            height: 400px;
+        }
+        .three{
+            float:left;
+            width:1.2em;
+            font-size:400%;
+            font-family:algerian,courier;
+            line-height:80%
+        }
+        .two{
+            margin-left: 50px;
+        }
+
+
+        .a1{
+            position: relative;
+            width: 200px;
+            height: 100px;
+        }
+        .a11{
+            width: 50px;
+            height: 100px;
+            float: left;
+            background-color: #ff9900;
+        }
+        .a13{
+            width: 50px;
+            height:100px;
+            /*float: right;*/
+            position: absolute;
+            right: 0;
+            top:0;
+            background-color: #3d3d3d;
+        }
+        .a12{
+            margin:0 50px;
+            /*width: 100%;*/
+            height: 100px;
+            background-color: #09ae18;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer clearfix">
+        <div class="inner"></div>
+    </div>
+
+    <hr>
+
+    <div class="one">
+        <p>
+            <span class="three">这</span><span class="two">是一些文本。
+            这是一些文本。这是一些文本。
+            这是一些文本。这是一些文本。这是一些文本。
+            这是一些文本。这是一些文本。这是一些文本。
+            这是一些文本。这是一些文本。这是一些文本。
+            这是一些文本。这是一些文本。这是一些文本。
+            这是一些文本。这是一些文本。这是一些文本。
+            这是一些文</span>
+        </p>
+    </div>
+
+    <div class="a1">
+        <div class="a11"></div>
+        <div class="a12"></div>
+        <div class="a13"></div>
+    </div>
+</body>
+</html>

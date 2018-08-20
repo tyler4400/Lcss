@@ -1,0 +1,66 @@
+<!--**
+ * Created by Tyler on 2017/9/30 14:32.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul,li{
+            list-style: none;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            outline: 0
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-appearance: none;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 16px;
+        }
+        ul{
+            margin:10px;
+        }
+        .container {
+            display: inline-block;
+            position: relative;
+            width: 32%;
+            text-align: center;
+        }
+        .dummy {
+            padding-top: 100%; /* 1:1 aspect ratio */
+            width: 100%;
+            background: #333333;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="container">
+        <div class="dummy">
+        </div>
+        <div class="element">
+            some text
+        </div>
+    </li>
+    <li class="container">
+        <div class="dummy">
+        </div>
+        <div class="element">
+            some text
+        </div>
+    </li>
+    <li class="container">
+        <div class="dummy">
+        </div>
+        <div class="element">
+            some text
+        </div>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!--**
+    控制台相关测试
+ * Created by Tyler on 2018年5月21日 15:49:41.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>控制台相关测试%</title>
+
+    <script>
+        /*
+            前端开发中如何在JS文件中检测用户浏览器是否打开了调试面板（F12打开开发者工具）？ - 知乎
+            https://www.zhihu.com/question/24188524
+        */
+
+        /*
+            控制台输出的内容如果是对象（包括正则表达式对象），则保留的是对象的引用，输出的会是对象的实时值，
+            即对象内容被改变时，能够反映其变化（前提是重新开启控制台）。
+            实际上是每次关闭再开启控制台的时候，重新调用对象的toString方法。
+        */
+        (function () {
+            var re = /a/;
+            var i = 0;
+            console.log(re);
+
+            re.toString = function () {
+                return '第 ' + (++i) + ' 次打开控制台';
+            };
+        })();
+    </script>
+    <script>
+        var a = {name: '1'};
+        console.log(a);
+        a.name = '2';
+        console.log(a);
+    </script>
+</head>
+<body>
+</body>
+</html>

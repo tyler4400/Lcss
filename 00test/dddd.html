@@ -1,0 +1,54 @@
+<!--**
+   实现左右固定宽度，中间自适应
+ * Created by Tyler on 2017/08/25 10:42.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body ,div{
+            margin:0;
+            padding:0;
+        }
+        #test{
+            Width:100%;
+            Height:300px;
+        }
+        #left{
+            background: #000;
+            Width:100px;
+            Height:300px;
+            position: absolute;
+            left: 0;
+        }
+        #middle{
+            background: #ff0000;
+            /*min-Width: 100px;*/
+            Height:300px;
+            /*position: absolute;*/
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+        #right{
+            background: #ffc120;
+            Width:100px;
+            Height:300px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+    </style>
+</head>
+<body>
+<div id="test">
+    <div id ="left"></div>
+    <div id ="middle"></div>
+    <div id ="right"></div>
+</div>
+
+
+</body>
+</html>

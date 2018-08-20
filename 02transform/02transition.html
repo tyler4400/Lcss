@@ -1,0 +1,232 @@
+<!-- 慕课网教程：
+     CSS3图片动态提示效果 http://www.imooc.com/learn/473
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态提示效果</title>
+    <style>
+        div.MainContent{
+            width: 94.5%;
+            overflow: hidden; /* 使得这个div可以包住里面的float元素,详情：http://blog.csdn.net/sunny_desmond/article/details/51329157*/
+            margin: 20px auto;
+            border: 1px solid #da11d5;
+            box-shadow: 0 0 5px rgb(157, 62, 218);
+        }
+    </style>
+    <style>
+        /*<!-- 去除浏览器默认的样式 -->*/
+        body,div,figcaption,figure,h2,p{
+            padding: 0;
+            margin: 0;
+        }
+
+        figure{
+            position: relative;
+            width: 33.33%;
+            height: 600px;
+            overflow: hidden;
+            float: left;
+        }
+        figcaption{
+            position: absolute;
+            bottom: 0;
+            color: #fff2fe;
+            /*font-family: "Adobe Caslon Pro",serif;*/
+        }
+
+        /* 响应式布局 */
+        @media screen and (min-width: 851px){
+            figure{
+                width: 33.33%;
+            }
+        }
+        @media screen and (min-width: 501px) and (max-width: 850px){
+            figure{
+                width: 50%;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            figure{
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        figure img{  opacity: 0.8;  }
+        figure img,p,h2,span,div{  transition: all 0.3s;  }
+
+
+        #figure1{  background: #202020; }
+        #figure1 figcaption{  width:100%;  height:100%;}
+        #figure1 figcaption div{
+            border: 2px solid #ffffff;
+            width: 80%;  height: 50%;
+            position: absolute;
+            top: 35%; left: 10%;
+
+            transform: translate(120%,-50%);
+        }
+        #figure1 figcaption h2{  margin-top: 250px;  }
+        #figure1 figcaption h2{  margin-left: 15%;  }
+        #figure1 figcaption p{  margin-left: 15%; margin-top: 50px; translate(0px, 0px); opacity: 0; }
+        #figure1:hover figcaption div{  transform: translate(0px,0px) rotate(-180deg);  }
+        #figure1:hover img{  opacity: 0.5;}
+        #figure1:hover figcaption p{  transform: translate(0px, -45px); opacity:1;  }
+
+
+        #figure2{  background: #3d3d3d;  }
+        #figure2 p{  background: #fff;  color: #585858;  margin: 5px;  padding-left: 10px;
+            /*text-align: center;*/
+            transform: translate(-220px,0px);
+        }
+        #figure2 p:nth-of-type(1){  transition-delay: 0s}
+        #figure2 p:nth-of-type(2){  transition-delay: 0.05s}
+        #figure2 p:nth-of-type(3){  transition-delay: 0.1s}
+        #figure2 figcaption{  margin-left: 10px;  margin-bottom: 120px;  }
+        #figure2:hover p{  transform: translate(0px,0px);  }
+        #figure2:hover img{ transform: translate(-15px,0px);   }
+
+
+        #figure3{  background: #123a5c;}
+        #figure3 figcaption{  top: 80%;  left:10%;  }
+        #figure3 figcaption h2{  transform: skew(90deg);  }
+        #figure3 figcaption p{  transform: skew(90deg); transition-delay: 0.1s;  }
+        /*#figure3 img{  transform-origin: 0 100% ;  }*/  /* 控制旋转的基点*/
+        #figure3:hover figcaption h2{transform: skew(0deg);}
+        #figure3:hover figcaption p{transform: skew(0deg);}
+        #figure3:hover img{  transform: rotate(3deg);  }
+
+
+        #figure4{  background: #000;}
+        #figure4 figcaption{  width: 100%;  background: #202020;  padding: 10px; text-align: center;
+            transition: 0.3s;  opacity: 0.3; transform: translate(0,72px);  }
+        #figure4:hover img{  animation: shake-time 1s ease;
+            /*animation-iteration-count: infinite; !*动画播放次数 n/infinite *!*/
+        }
+        #figure4:hover figcaption{  transform: translate(0px,0px);  opacity: 0.7;  }
+
+
+        #figure5{  background: #3d3d3d; }
+        #figure5 figcaption{  width:100%;  height:100%;}
+        #figure5 figcaption div{  position: absolute;  opacity: 0; transition-timing-function: ease-in }
+        #figure5 figcaption div:nth-of-type(1){
+        border-top: 2px solid #ffffff;
+        border-bottom: 2px solid #ffffff;
+        width: 80%;  height: 40%;
+        top: 40%; left: 10%;
+
+        transform: scale(0,1);
+        }
+        #figure5 figcaption div:nth-of-type(2){
+        border-left: 2px solid #ffffff;
+        border-right: 2px solid #ffffff;
+        width: 70%;  height: 50%;
+        top: 35%; left: 15%;
+
+        transform: scale(1,0);
+        }
+        #figure5 img{  opacity: 0.5;  }
+        #figure5 figcaption h2{  margin-left: 20%; margin-top: 270px; }
+        #figure5 figcaption p{  margin-left: 20%; margin-top: 5px; transform: scale(1.1);  opacity: 0; }
+        #figure5:hover figcaption div{  transform: scale(1,1);  opacity: 1;  }
+        #figure5:hover img{  opacity: 0.8; transform: scale(1.1);}
+        #figure5:hover figcaption p{  transform: scale(1); opacity:1;  }
+
+
+         /*#figure6 ...*/
+
+        @keyframes shake-time {
+            0% {
+                transform: scale(1);
+            }
+            10%, 20% {
+                transform: scale(1.1) rotate(-3deg);
+            }
+            30%, 50%, 70%, 90% {
+                transform: scale(1.1) rotate(3deg);
+            }
+            40%, 60%, 80% {
+                transform: scale(1.1) rotate(-3deg);
+            }
+            100% {
+                transform: scale(1) rotate(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="MainContent">
+        <figure id="figure1">
+            <img src="img/girl11.jpg" alt="girl1">
+            <figcaption>
+                <h2>旋转动画-飞来飞舞</h2>
+                <p>这是我老婆</p>
+                <div></div>
+            </figcaption>
+        </figure>
+        <figure id="figure2">
+            <img src="img/girl22.jpg" alt="girl1">
+            <figcaption>
+                <h2>平移动画-多行文字</h2>
+                <p>这是谁</p>
+                <p>你猜</p>
+                <p>是我老婆</p>
+            </figcaption>
+        </figure>
+        <figure id="figure3">
+            <img src="img/girl3.jpg" alt="girl1">
+            <figcaption>
+                <h2>斜切动画 飞入飞出</h2>
+                <p>还是我老婆</p>
+            </figcaption>
+        </figure>
+        <figure id="figure4">
+            <img src="img/girl4.jpg" alt="girl1">
+            <figcaption>
+                <h2>振动动画-来回摇摆</h2>
+                <p>使用keyframe实现</p>
+            </figcaption>
+        </figure>
+        <figure id="figure5">
+            <img src="img/girl5.jpg" alt="girl1">
+            <figcaption>
+                <h2>缩放动画-缩放动画</h2>
+                <p>也是我老婆</p>
+                <div></div>
+                <div></div>
+            </figcaption>
+        </figure>
+        <figure id="figure6">
+            <img src="img/girl6.jpg" alt="girl1">
+            <figcaption>
+                <h2>My NextDoor Girl</h2>
+                <p>图片注解</p>
+            </figcaption>
+        </figure>
+        <figure id="figure7">
+            <img src="img/girl7.jpg" alt="girl1">
+            <figcaption>
+                <h2>My NextDoor Girl</h2>
+                <p>图片注解</p>
+            </figcaption>
+        </figure>
+        <figure id="figure8">
+            <img src="img/girl8.jpg" alt="girl1">
+            <figcaption>
+                <h2>My NextDoor Girl</h2>
+                <p>图片注解</p>
+            </figcaption>
+        </figure>
+        <figure id="figure9">
+            <img src="img/girl9.jpg" alt="girl1">
+            <figcaption>
+                <h2>My NextDoor Girl</h2>
+                <p>图片注解</p>
+            </figcaption>
+        </figure>
+    </div>
+</body>
+</html>

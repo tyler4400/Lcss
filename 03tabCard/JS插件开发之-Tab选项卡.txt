@@ -1,0 +1,4 @@
+/**
+ * JS插件开发之-Tab选项卡-慕课网  http://www.imooc.com/learn/825
+ * Created by Tyler on 2017/08/22 22:30.
+ */

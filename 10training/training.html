@@ -1,0 +1,84 @@
+<!--**
+ * Created by Tyler on 2018年5月28日 16:16:40.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我是一个demo</title>
+    <style>
+        html{
+            font-size: 100px;
+        }
+        body{
+            font-size: 18px;
+        }
+        .demo{
+            padding: 20px 0;
+            text-align: center;
+            background-color: #e6e6e6;
+        }
+        .box{
+            padding: 10px;
+            width: calc(100% - 40px);
+            max-width: 480px;
+            margin: auto;
+            border: 1px solid #3d3d3d;
+        }
+
+        .father{
+            font-size: 20px;
+            width: 200px;
+            height: 100px;
+            margin: auto;
+            background-color: #fff60c;
+        }
+        .father > .son {
+            width: 100px;
+            height: 40px;
+            font-size: 20px;
+        }
+        .father > .son2 {
+            width: 5em;
+            height: 2em;
+            font-size: 1em;
+        }
+        .button{
+            width: 1rem;
+            height: 0.4rem;
+            font-size: 0.2rem;
+        }
+
+    </style>
+</head>
+<body>
+    <hr>
+    <p>em的使用</p>
+    <div class="demo">
+        <div class="box">
+            <div class="father">
+                <button class="son">提交</button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <p>em的使用</p>
+    <div class="demo">
+        <div class="box">
+            <div class="father">
+                <button class="son2">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <!--<hr>-->
+    <!--<p>rem的使用</p>-->
+    <!--<div class="demo">-->
+        <!--<div class="box">-->
+            <!--<button class="button">再绿</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <hr>
+</body>
+</html>

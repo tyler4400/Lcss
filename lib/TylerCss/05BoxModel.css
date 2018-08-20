@@ -1,0 +1,112 @@
+/**
+ * 盒模型 轮廓 margin padding border
+ * Created by Tyler on 2017/09/05 18:10.
+ */
+
+
+/********************************* margin *******************************************************/
+
+/* 这 | 块状元素 | 水平居中 */
+.m-hc{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 这 | 交易的每一行栏左右的margin样式1 */
+.m-lr-3pah{
+    margin-left:3%;
+    margin-right:3%;
+}
+
+/* 这 | 交易的每一行栏左右的margin样式2 */
+.m-lr-5pah{
+    margin-left:5%;
+    margin-right:5%;
+}
+
+/* 这 | 上面留出来点空白 */
+.mt-10px{
+    margin-top:10px;
+}
+
+/* 这 | 下面留出来点空白 */
+.mb-10px{
+    margin-bottom:10px;
+}
+
+/* 这 | 上面留出来大点空白 */
+.mt-30px{
+    margin-top:30px;
+}
+
+/* 这 | 交易的每一行栏左的margin */
+.ml-3pah{
+    margin-left: 3%;
+}
+
+/* 这 | 交易的每一行栏右的margin */
+.mr-3pah{
+    margin-right:3%;
+}
+
+/********************************* padding *******************************************************/
+
+/* 这 | 交易的每一行栏左右的padding样式1 */
+.pad-lr-3pah{
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+/* 这 | 交易的每一行栏左右的padding样式2 */
+.pad-lr-5pah{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+
+/********************************* border *******************************************************/
+
+/* 这 | 边框底部分割线 */
+.bb-1px-cacaca{
+    border-bottom: 1px solid #cacaca;
+}
+
+
+/* 这 | 用div生成一条分割线 | 这里命名没有遵循emmet */
+.div-line{
+    border-bottom: 1px solid #cacaca;
+}
+
+/* 这 | 边框顶部分割线 */
+.bt-1px-cacaca{
+    border-top: 1px solid #cacaca;
+}
+
+/* 这 | 边框左边分割线 */
+.bl-1px-cacaca{
+    border-left: 1px solid #cacaca;
+}
+
+/* 这 | 边框右边分割线 */
+.br-1px-cacaca{
+    border-right: 1px solid #cacaca;
+}
+
+/* 这 | 去除边框 */
+.bd-n{
+    border: none;
+}
+
+/* 这 | 圆角 */
+.bdrs-5px{
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+/********************************* 轮廓 *******************************************************/
+
+/* 这 | 边框的轮廓 */
+.ol-n{
+    outline: none;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡案例-炫酷下拉</title>
+    <style type="text/css">
+        .demo-nav {
+            width: 500px;
+            margin: 0 auto;
+        }
+
+        .demo-nav li {
+            list-style: none;
+            float: left;
+            line-height: 40px;
+            padding: 0 10px;
+            background: #09f;
+            color: #fff;
+            position: relative;
+        }
+
+        .demo-nav li ul {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .demo-nav li ul li {
+            float: none;
+            /*过渡代码*/
+            transition: all .3s;
+            background: #f90;
+            opacity: 0;
+        }
+        /*奇数项初始往右边偏移100%*/
+        .demo-nav li ul li:nth-of-type(1n) {
+            transform: translate3d(100%, 0, 0);
+        }
+        /*偶数项初始往左边偏移100%*/
+        .demo-nav li ul li:nth-of-type(2n) {
+            transform: translate3d(-100%, 0, 0);
+        }
+
+        .demo-nav li:hover ul {
+            overflow: visible;
+        }
+        /*透明度和互动同时进行*/
+        .demo-nav li:hover ul li {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="MainContent">
+
+        <div class="demo-nav">
+            <!--.fllil,.clear是在样式重置表（reset.css）上写好的样式，.fllil li{fload:left;}.clear{clear:both;}-->
+            <ul class="menu fllil">
+                <li>HTML5
+                    <ul class="sub-menu">
+                        <li>article</li>
+                        <li>section</li>
+                        <li>menu</li>
+                        <li>nav</li>
+                    </ul>
+                </li>
+                <li>CSS3
+                    <ul class="sub-menu">
+                        <li>动画</li>
+                        <li>过渡</li>
+                        <li>圆形</li>
+                        <li>边框</li>
+                    </ul>
+                </li>
+                <li>Javascript
+                    <ul class="sub-menu">
+                        <li>字符串</li>
+                        <li>数组</li>
+                        <li>对象</li>
+                        <li>布尔</li>
+                    </ul>
+                </li>
+                <li>Jquery
+                    <ul class="sub-menu">
+                        <li>动画</li>
+                        <li>特效</li>
+                        <li>AJAX</li>
+                    </ul>
+                </li>
+                <li>VUE</li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+
+    </div>
+
+
+    <link rel="stylesheet" href="../lib/css/common.css">
+</body>
+</html>

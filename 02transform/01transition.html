@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition学习</title>
+    <style>
+        #transition1{
+            width: 100px;
+            height: 80px;
+            background: #09ae18;
+        }
+
+        #transition1:hover{
+            /*transition: transform 2s ;*/
+            transition: all 1s ease-out;
+            transition-delay: 1s;
+            transform: translate(100px);
+            background: #ff14f9;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="transition1"></div>
+</body>
+</html>

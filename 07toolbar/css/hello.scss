@@ -1,0 +1,13 @@
+$blue: #ddd;
+.father{
+    background-color: $blue;
+    &:hover{
+        width: 10px + 20px;
+    }
+}
+
+.son{
+    @extend .father;
+    font-size: 12px;
+}
+

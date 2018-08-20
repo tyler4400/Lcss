@@ -1,0 +1,110 @@
+<!--
+angularJS指令——输入框输入时按金额格式变化自动插入千位分隔符
+http://www.cnblogs.com/chenjieXie/p/6479233.html
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>input</title>
+</head>
+
+<body>
+user:
+<input type="number" step="0.01" name="user" id="user" oninput="userchange(event)" onkeyup="upkeyd(event)"/>
+<script type="text/javascript">
+    var userele = document.getElementById("user");
+    function userchange(event) {
+        userele.start = userele.selectionStart;
+        userele.end = userele.selectionEnd;
+        // store current positions in variables
+        console.log("userele.start:" + userele.start);
+        console.log("userele.end:" + userele.end);
+
+        // console.log(userele.value);
+        var k = userele.value;
+        var suffix = k.slice(userele.start);
+        userele.suffix = suffix;
+        userele._value = k;
+        var k1 = null;  //小数点前数据
+        var k2 = null;   //小数点后数据
+        var str = null;   //输出字符
+        // 获取输入框数据
+        if (k.length > 0) {
+            k = k.replace(/,/g, '');
+        }
+        // 初始化k1与k2
+        if (k.indexOf(".") != -1) {
+            k1 = k.substring(0, k.indexOf("."));
+            k2 = k.substring(k.indexOf(".") + 1);
+            console.log("k1=%s;k2=%s", k1, k2);
+            console.log("length:%s", k2.length);
+        } else {
+            k1 = k;
+            k2 = 0;
+        }
+        // 格式化k1与k2
+        k1 = reverseStr(k1);
+        var temp = k1.replace(/(.{3})/g, "$1,");
+        if (temp.charAt(temp.length - 1) == ",")
+            temp = temp.substring(0, temp.length - 1);
+        temp = reverseStr(temp);
+        if (k2) {
+            if (k2.charAt(0) == "0") {
+                if (!k2.charAt(1)) {
+                    str = temp;
+                } else if (k2.charAt(1) == "0") {
+                    str = temp;
+                }
+                else {
+                    str = temp + "." + k2.substring(0, 2);
+                }
+
+            } else {
+                if (!k2.charAt(1)) {
+                    str = temp + "." + k2.charAt(0);
+                } else if (k2.charAt(1) == "0") {
+                    str = temp + "." + k2.charAt(0);
+                }
+                else {
+                    str = temp + "." + k2.substring(0, 2);
+                }
+            }
+        } else {
+            str = temp;
+        }
+        console.log("str:" + str);
+        // 输出
+        userele.value = str;
+        userele._transformValue=str;
+    }
+    // 设置光标
+    function upkeyd(event) {
+        console.log("event.keyCode:" + event.keyCode);
+        if (event.keyCode == "8") {
+            if (userele.value.length > 0) {
+                restorePos(userele);
+            }
+        }
+    }
+    function restorePos(el) {
+        var offset = 0;
+        // restore from variables...
+//        if(el._transformValue&&el._value){
+//            offset = el._value.length - el._transformValue.length;
+//            console.log('offset:' + offset);
+//            offset>0&&el.setSelectionRange(el.start - offset-1, el.end - offset-1);
+//        }
+        console.log(el.suffix);
+        var offset = el._transformValue.length-el.suffix.length;
+        el.setSelectionRange(offset, offset);
+    }
+    // 倒叙
+    function reverseStr(str) {
+        return str && str.split('').reverse().join('');
+    }
+</script>
+</body>
+
+</html>

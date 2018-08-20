@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>input</title>
+</head>
+
+<body>
+    user:
+    <input type="text" name="user" id="user" oninput="userchange(event)" onkeyup="upkeyd(event)" />
+    <script type="text/javascript">
+    var userele = document.getElementById("user");
+
+    function userchange(event) {
+        // console.log(userele.value);
+        var k = userele.value;  
+        var k1 = null;  //小数点前数据
+        var k2 = null;   //小数点后数据
+        var str = null;   //输出字符
+        // 获取输入框数据
+        if (k.length > 0) {
+
+            console.log(k.toString());
+            var tempk;
+            tempk = k.charAt(0);
+            for (var i = 1; i < k.length; i++) {
+                if (k.charAt(i) != ",") {
+                    tempk += k.charAt(i);
+                }
+            }
+            k = tempk;
+
+        }
+        // 初始化k1与k2
+        if (k.indexOf(".") != -1) {
+            k1 = k.substring(0, k.indexOf("."));
+            k2 = k.substring(k.indexOf(".") + 1);
+            console.log("k1=%s;k2=%s", k1, k2);
+            console.log("length:%s", k2.length);
+        } else {
+            k1 = k;
+            k2 = 0;
+        }
+        // 格式化k1与k2
+        k1 = reverseStr(k1);
+        var temp = k1.replace(/(.{3})/g, "$1,");
+        if (temp.charAt(temp.length - 1) == ",")
+            temp = temp.substring(0, temp.length - 1);
+        temp = reverseStr(temp);
+        if (k2) { 
+            if (k2.charAt(0) == "0") {
+                if (!k2.charAt(1)) { 
+                	str = temp; 
+                } else if (k2.charAt(1) == "0") {
+                	str = temp;
+                }
+                else{
+                    str = temp + "." + k2.substring(0,2);
+                }
+
+            } else {
+            	 if (!k2.charAt(1)) { 
+                	str = temp + "."+k2.charAt(0); 
+                } else if (k2.charAt(1) == "0") {
+                	str = temp + "." + k2.charAt(0);
+                }
+                else{
+                    str = temp + "." + k2.substring(0,2);
+                }
+            }        
+        } else {
+            str = temp;
+        }
+        console.log("str:" + str);
+        // 输出
+        setTimeout(function() { 
+            userele.value = str;
+            // setpoint();
+        }, 700);
+    }
+// 设置光标
+    function upkeyd(event) {
+    	console.log("event.keyCode:"+event.keyCode);
+        if (event.keyCode == "8") {
+            if (userele.value.length > 0) {
+            	   // userele.select();
+                // userele.setSelectionRange(2, 5);
+                console.log("point:"+userele.selectionStart);
+            }
+         
+            // userele.collapse(true) 
+
+        }
+
+    }
+    // 设置光标
+    function setpoint() {
+    	if (userele.value.length > 0) {
+            	   // userele.select();
+                // userele.setSelectionRange(1, 1);
+                console.log("point:"+userele.selectionStart);
+            }
+    }
+    // 倒叙
+    function reverseStr(str) {
+        if (!str) {
+            return str;
+        } else {
+            var temp = [];
+            for (var i = 0; i < str.length; i++) {
+                temp.push(str.charAt(i));
+            }
+            return temp.reverse().join("");
+        }
+    }
+    </script>
+</body>
+
+</html>

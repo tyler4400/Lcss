@@ -1,0 +1,99 @@
+<!--**
+ * Created by Tyler on 2017/10/23 21:20.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <!--删除苹果默认的工具栏和菜单栏-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!--设置苹果工具栏颜色-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!--忽略页面中的数字识别为电话-->
+    <meta name="format-detection" content="telephone=no,email=no">
+
+    <title>dialog对话框</title>
+    <style>
+        *{  margin: 0;  padding: 0;  }
+        body{
+            font-size: 12px;
+            padding: 20px;
+        }
+        .btn{
+            display: block;
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+            background-color: #5bb4ff;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            outline: none;
+            /*border: none;*/
+            color: #077B01;
+        }
+
+        .dialog-container{
+            position: fixed; left: 0; right: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex; justify-content: center; align-items: center;
+
+        }
+        .dialog-box{
+            padding: 1em;
+            -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        .dialog-header{
+            width: 50px; height: 50px; margin: auto;
+            background: url("../img/redtrue.png") no-repeat 0,0; -webkit-background-size: 100%; background-size: 100%;
+        }
+        .dialog-content{
+            padding: 1em; line-height: 2; text-align: center;
+            color: #fff2fe;
+        }
+        .dialog-footer{
+            display: flex; justify-content: space-around;
+            padding: 0.5em 1em;
+        }
+        .dialog-footer button{
+            padding: 0.7em 1.8em; margin: 0.3em;
+            border: none; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+            color: #eeeeee; text-shadow: #666 1px 0;
+            outline: none;
+        }
+        .dialog-footer button.btn-green{
+            background-color: rgba(2, 202, 200, 0.8);
+        }
+        .dialog-footer button.btn-red{
+            background-color: rgba(251, 23, 50, 0.8);
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="dialog-container">
+    <div class="dialog-box">
+        <div class="dialog-header"></div>
+        <div class="dialog-content">您确定要清空购物车吗？</div>
+        <div class="dialog-footer">
+            <button class="btn-green">确定</button>
+            <button class="btn-red">取消</button>
+        </div>
+    </div>
+</div>
+
+    <button id="btn1" class="btn">没有任何参数传递(需要手动关闭)</button>
+    <button id="btn2" class="btn">弹出一个不带任何按钮，且是警告的框，并且两秒后自动关闭</button>
+    <button id="btn3" class="btn">弹出一个有确认的取消的按钮的成功框，点击按钮直接关闭</button>
+    <button id="btn4" class="btn">弹出一个有确认的警告框，点击按钮不可以关闭(需要手动关闭)</button>
+    <button id="btn5" class="btn">弹出一个多组合的按钮框，且按钮样式可以定制</button>
+    <button id="btn6" class="btn">弹出一个确认和删除的框，点击确认弹出加载框2秒自动关闭，点击删除按钮把上一次框关闭</button>
+    <button id="btn7" class="btn">带动画的弹出框</button>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!--**
+ * Created by Tyler on 2017/08/25 14:15.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../lib/common.css">
+    <style>
+        div#out{
+            background: #0099ff;
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+        div#in{
+            background: #ff14f9;
+            position: absolute;
+            /*top: 0;*/
+            /*left: 0;*/
+            /*bottom: 0;*/
+            /*right: 0;*/
+            -webkit-transform: translate(50%, 50%);
+            -moz-transform: translate(50%, 50%);
+            -ms-transform: translate(50%, 50%);
+            -o-transform: translate(50%, 50%);
+            transform: translate(50%, 50%);
+            width: 200px;
+            height: 300px;
+            /*margin:auto; 自动平分被变更的尺寸空间*/
+            /*margin: auto;*/
+        }
+    </style>
+</head>
+<body>
+<div id="out">
+    <div id="in"></div>
+</div>
+</body>
+</html>

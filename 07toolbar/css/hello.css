@@ -1,0 +1,12 @@
+.father, .son {
+  background-color: #ddd;
+}
+.father:hover, .son:hover {
+  width: 30px;
+}
+
+.son {
+  font-size: 12px;
+}
+
+/*# sourceMappingURL=hello.css.map */

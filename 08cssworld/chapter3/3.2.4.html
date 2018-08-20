@@ -1,0 +1,70 @@
+<!--**
+ * Created by Tyler on 2018/4/19 16:39.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>width的作用细节</title>
+    <style>
+        .wrap{
+            padding: 20px 0;
+            background-color: #d9d9d9;
+            text-align: center;
+        }
+        .foo{
+            width: 200px;
+            margin: auto;
+            box-sizing: border-box;
+            padding: 20px;
+            border: 10px solid #ffe10a;
+            background-color: #009dc8;
+        }
+
+        .wrap2{
+            border: 10px solid #febf2a;
+            background-color: #ffe10a;
+            padding: 10px 30px;
+        }
+        .line{
+            text-align: center;
+            margin: 0;
+            border: 5px solid #009dc8;
+            background-color: #998899;
+            padding: 0;
+        }
+        .lin-content{
+            list-style-type: none;
+            padding: 10px 0;
+            font-size: 20px;
+            color: #e9e8e5;
+            border-bottom: 1px solid #957793;
+            border-top:  1px solid #b0a0b0;
+        }
+        .lin-content:first-child{
+            border-top: 0;
+        }
+        .lin-content:last-child{
+            border-bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="foo">box-sizing属性是改变width的作用对象</div>
+    </div>
+
+    <hr>
+    <div class="wrap2">
+        <ul class="line">
+            <li class="lin-content">这是内容1</li>
+            <li class="lin-content">这是内容2</li>
+            <li class="lin-content">这是内容3</li>
+            <li class="lin-content">这是内容4</li>
+            <li class="lin-content">这是内容5</li>
+            <li class="lin-content">这是内容6</li>
+        </ul>
+    </div>
+</body>
+</html>

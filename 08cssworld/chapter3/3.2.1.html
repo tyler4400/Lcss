@@ -1,0 +1,66 @@
+<!--**
+ * Created by Tyler on 2018/4/16 15:06.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深藏不露的width：auto</title>
+    <style>
+        .width{
+            width: 400px;
+            height: 100px;
+            background-color: #ffe10a;
+        }
+
+        .father{
+            width: 500px;height: 300px;
+            margin: 0 auto;
+            position: relative;
+            background-color: #5bb4ff;
+        }
+        .child{
+            position: absolute;left: 20px;right: 20px;
+            margin: 10px 0;
+            padding: 0 10px;
+            border: 3px solid #09ae18;
+            background-color: #ffe10a;
+        }
+
+        .container{
+            width: 400px;
+            padding: 1em;
+            color: #fff2fe;
+            background-color: #ffe10a;
+        }
+        .out{
+            text-align: center;
+            background-color: #3d3d3d;
+        }
+        .inner{
+            text-align: left;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="width">
+        <div>充分利用可用空间</div>
+    </div>
+
+    <hr>
+    <p>格式化宽度</p>
+    <div class="father">
+        <div class="child">其宽度大小相对于最近的具有定位特性的（position属性值不是static的祖先元素计算</div>
+    </div>
+
+    <hr>
+    <p>包裹性-文字少的时候居中，超过一行居左显示</p>
+    <div class=" container">
+        <div class="out">
+            <p class="inner">hahah</p>
+        </div>
+    </div>
+</body>
+</html>

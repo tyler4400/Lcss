@@ -1,0 +1,27 @@
+/**
+ *  这里是我的常用CSS。这里放置主/总的。
+ *  注释说明：起作用的对象|作用元素类型|效果|负面缺点效果|用意解释  .   （可不全写）
+ *  命名说明：(可能的前缀) + block/inline/具体元素/属性 + 效果 + 关键改动或者特定数值（可不全写）
+ *  缩写：(很多地方借鉴了emmet的写法)
+          pah : %
+ *
+ * We Work In The Dark To Serve The Light!
+ *
+ * Created by Tyler on 2017/09/05 16:29.
+ */
+
+/* 里 | 去除浏览器默认样式以及常用样式  */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* 这、里 | 一般用在一个总的div上，名字用来致敬 */
+.HiddenBlade{
+    width: 100%;
+    background-color: #f2f2f2;
+    text-align: center;
+    font-size: 14px;
+    font-family: "微软雅黑", monospace;
+}
+

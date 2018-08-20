@@ -1,0 +1,56 @@
+<!--**
+ * Created by Tyler on 2018/4/20 11:25.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于高度100%</title>
+    <style>
+        .wrap{
+            padding: 20px 0;
+            text-align: center;
+            background-color: #e6e6e6;
+        }
+        .demo{
+            position: relative;
+            width: 500px;
+            /*box-sizing: border-box;*/
+            margin: auto;
+            border: 1px solid #009dc8;
+            text-align: center;
+        }
+        .img{
+            height: 100px;
+            background-color: #3d3d3d;
+        }
+        .btn{
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            opacity: 0.5;
+        }
+        .btn.next{
+            background-color: #990099;
+            right: 0;
+        }
+        .btn.prev{
+            background-color: #3f43ff;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="demo">
+            <a href="" title="上一张" class="btn prev"></a>
+            <a href="" title="下一张" class="btn next"></a>
+            <div class="img"></div>
+        </div>
+    </div>
+
+    <hr>
+    <div style="background: #123a5c;"><span style="display: inline-block;"></span></div>
+</body>
+</html>
