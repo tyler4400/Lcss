@@ -1,0 +1,70 @@
+<!--**
+ * Created by Tyler on 2018/8/22 9:58.
+ * 浅谈js的事件冒泡和事件捕获 - 晴天de雨滴 - 博客园  https://www.cnblogs.com/christineqing/p/7607113.html
+ * 以及
+ * js事件冒泡、阻止事件冒泡以及阻止默认行为 - jsanntq - 博客园  https://www.cnblogs.com/jsanntq/p/7681942.html
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div onclick="bodyClick()">
+    <div onclick="divClick()">
+        <button onclick="btn()">
+            <p onclick="p()">事件冒泡流</p>
+        </button>
+    </div>
+</div>
+
+<div id="oBody">
+    <div id="oD">
+        <button id="oB">
+            <p id="oP">事件捕获流</p>
+        </button>
+    </div>
+</div>
+<script>
+
+    function p(){
+        console.log('p标签被点击')
+    }
+    function btn(){
+        console.log("button被点击")
+    }
+    function divClick(event){
+        console.log('div被点击');
+    }
+    function bodyClick(){
+        console.log('body被点击')
+    }
+
+</script>
+<script>
+    var oP = document.getElementById("oP");
+    var oB = document.getElementById("oB");
+    var oD = document.getElementById("oD");
+    var oBody = document.getElementById("oBody");
+
+    oP.addEventListener('click',function(){
+        console.log('p标签被点击')
+    },true);
+
+    oB.addEventListener('click',function(){
+        console.log("button被点击")
+    },true);
+
+    oD.addEventListener('click',  function(){
+        console.log('div被点击')
+    },true);
+
+    oBody.addEventListener('click',function(){
+        console.log('body被点击')
+    },true);
+
+</script>
+</body>
+</html>
