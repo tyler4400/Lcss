@@ -1,0 +1,23 @@
+<!--**
+ * Created by Tyler on 2018/12/7 15:51.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3.4构造器注意事项</title>
+</head>
+<body>
+<script>
+    function niaja(){
+        console.log(this);
+        return this;
+    }
+
+    let aaa = niaja;
+    aaa();
+
+    let bbb = new niaja();
+</script>
+</body>
+</html>
