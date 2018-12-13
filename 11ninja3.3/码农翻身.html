@@ -1,0 +1,44 @@
+<!--**
+ * Created by Tyler on 2018/12/7 15:51.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码农翻身</title>
+</head>
+<body>
+<a href="https://mp.weixin.qq.com/s?__biz=MzAxOTc0NzExNg==&mid=2665513786&idx=1&sn=6f51ad314e3ef3e1575e032568477f3a&chksm=80d67b79b7a1f26f88899ccaa48c150745c3010e9b1f21a3e1e326dc5b6767b74f50db3e10f2&mpshare=1&scene=24&srcid=08171xl1WrvDIakeMfYJxWRm#rd">link</a>
+<p>当你去new Student的时候，javascript会建立这样的关系链</p>
+<img src="640.webp.jpg" width="250" alt="">
+<p>一个对象的隐式原型指向构造该对象的构造函数的原型，</p>
+<script>
+    let animal = {
+        name: 'animal',
+        eat: function (){
+            console.log(this.name + ' is eating')
+        }
+    };
+    animal.eat();
+
+
+    let dog = {
+        name: 'dog',
+        __proto__: animal
+    };
+    dog.eat();
+
+
+    function Student(name){
+        this.name = name;
+        this.sayHello = function (){
+            console.log('hi, I\'m ' + this.name);
+        }
+    }
+    let jack = new Student('jack');
+    jack.sayHello();
+    console.log(Student.prototype);
+
+</script>
+</body>
+</html>

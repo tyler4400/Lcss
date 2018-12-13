@@ -1,0 +1,46 @@
+<!--**
+ * Created by Tyler on 2018/12/7 15:51.
+ * -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5.2.1.私有变量</title>
+</head>
+<body>
+<script>
+    function Persion(name, age){
+        var name = name || '';
+        var age = age || 0;
+
+        this.getName = function () {
+            return name;
+        };
+        this.setName = function (n){
+            name = n;
+        };
+        this.getAge = function(){
+            return this.age;
+        };
+        this.setAge = function(age){
+            this.age = age;
+        };
+    }
+
+    var Jack = new Persion('jack', 18);
+    console.log(Jack.name);
+    console.log(Jack.getName());
+    console.log(Jack.age);
+    console.log(Jack.getAge());
+
+    console.log('---------reset name and age-------------');
+    Jack.setName('jackson');
+    Jack.setAge(19);
+
+    console.log(Jack.name);
+    console.log(Jack.getName());
+    console.log(Jack.age);
+    console.log(Jack.getAge());
+</script>
+</body>
+</html>
