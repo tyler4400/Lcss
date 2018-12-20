@@ -1,0 +1,93 @@
+#G-lightbox-mask{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.5;
+    z-index: 1000;
+}
+
+
+#G-lightbox-popup{
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -240px;
+    margin-top: -150px;
+    width: 480px;
+    height: 300px;
+    background-color: #fff;
+    z-index: 1001;
+}
+#G-lightbox-popup > .lightbox-pic-view{
+    position: relative;
+    border: 5px solid #fff;
+    -webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;
+    overflow: hidden;
+    background: url("../img/icon/loading.gif") no-repeat center;
+    z-index: 1;
+}
+#G-lightbox-popup > .lightbox-pic-view > .lightbox-btn{
+    position: absolute;
+    top: 0;
+    width: 35%;
+    height: 100%;
+    background-color: #000000;
+    opacity: 0.5;
+    cursor: pointer;
+}
+#G-lightbox-popup > .lightbox-pic-view > .lightbox-image{
+    display: block;
+}
+#G-lightbox-popup > .lightbox-pic-view > .lightbox-btn.lightbox-prev-btn{
+    left: 0;
+}
+#G-lightbox-popup > .lightbox-pic-view > .lightbox-btn.lightbox-next-btn{
+    right: 0;
+}
+#G-lightbox-popup > .lightbox-pic-view > .lightbox-btn.lightbox-prev-btn.lightbox-prev-btn-show{
+    background: url("../img/icon/prev.png") no-repeat left center;
+}
+#G-lightbox-popup > .lightbox-pic-view > .lightbox-btn.lightbox-next-btn.lightbox-next-btn-show{
+    background: url("../img/icon/next.png") no-repeat right center;
+}
+
+#G-lightbox-popup > .lightbox-pic-caption{
+    position: relative;
+    margin: -60px 5px 0;
+    background-color: #000000;
+    opacity: 0.5;
+    z-index: 2;
+}
+#G-lightbox-popup > .lightbox-pic-caption > .lightbox-caption-area{
+    padding: 10px 5px;
+    color: #ffffff;
+}
+#G-lightbox-popup > .lightbox-pic-caption > .lightbox-caption-area > .lightbox-of-index{
+    color: #999;
+}
+#G-lightbox-popup > .lightbox-pic-caption > .lightbox-close-btn{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 27px;
+    height: 27px;
+    background: url("../img/icon/close.png") no-repeat center;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
