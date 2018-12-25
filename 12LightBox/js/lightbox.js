@@ -10,6 +10,7 @@
         this.bodyNode = $(document.body);
         this.JDOM = null;
 
+        this.index = 0; //当前图片所在组的索引
         this.groupName = null;
         this.groupData = [];
 
@@ -44,11 +45,12 @@
                 currentId : JDOM.attr('data-id'),
             };
             _this.showMaskAndPopup(curObj);
+            _this.showPicAndSwitchBtn(curObj);
 
         },
         showMaskAndPopup (obj) {
-            //隐藏图片和caption区域
             let _this = this;
+            //隐藏图片和caption区域
             _this.JDOM.popupPic.hide();
             _this.JDOM.picCaptionArea.hide();
 
@@ -70,7 +72,26 @@
             }).animate({top: (winH / 2 + 10) / 2}, 'fast', function () {
                 console.log('加载图片');
             });
+        },
+        showPicAndSwitchBtn (obj) {
+            let _this = this;
 
+            _this.index = _this.getIndexOf(obj.currentId);
+            console.log(_this.index);
+
+            //判断是否展示上下切换按钮(先让按钮都显示出来)
+            _this.JDOM.prevBtn.removeClass('d-n');
+            _this.JDOM.nextBtn.removeClass('d-n');
+            if(_this.index === 0) _this.JDOM.prevBtn.addClass('d-n');
+            if(_this.index === _this.groupData.length - 1) _this.JDOM.nextBtn.addClass('d-n');
+        },
+        getIndexOf (id) {
+            let index = 0;
+            $(this.groupData).each(function (i) {
+                if(this.id === id) return false;
+                index ++;
+            });
+            return index;
         },
         getJDOM () {
             return {
