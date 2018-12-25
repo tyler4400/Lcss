@@ -44,6 +44,17 @@
             _this.popupWin.fadeOut();
         });
 
+        this.JDOM.prevBtn.on('click', function(e){
+            _this.switchMethod (-1);
+            e.stopPropagation();
+
+        });
+
+        this.JDOM.nextBtn.on('click', function(){
+            _this.switchMethod (1);
+            e.stopPropagation();
+        });
+
     };
 
     LightBox.prototype = {
@@ -57,6 +68,7 @@
             _this.showNextPrevBtn(curObj.currentId);
 
         },
+
         showMaskAndPopup (id = 0, src) {
             let _this = this;
             //隐藏图片和caption区域
@@ -91,6 +103,16 @@
                     picH = _this.JDOM.popupPic.height();
                 _this.changePic(picW, picH);
             });
+        },
+        switchMethod (num) {
+            let _this = this;
+            _this.index += num;
+            if(_this.index > (_this.groupData.length - 1)) return false;
+            _this.loadPic(_this.groupData[_this.index].src);
+            _this.JDOM.prevBtn.removeClass('d-n');
+            _this.JDOM.nextBtn.removeClass('d-n');
+            if(_this.index === 0) _this.JDOM.prevBtn.addClass('d-n');
+            if(_this.index === _this.groupData.length - 1) _this.JDOM.nextBtn.addClass('d-n');
         },
         changePic (w, h) {
             let _this = this;
@@ -131,7 +153,6 @@
             let _this = this;
 
             _this.index = _this.getIndexOf(id);
-            console.log(_this.index);
 
             //判断是否展示上下切换按钮(先让按钮都显示出来)
             _this.JDOM.prevBtn.removeClass('d-n');
