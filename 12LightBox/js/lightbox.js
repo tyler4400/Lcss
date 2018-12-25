@@ -44,11 +44,11 @@
                 sourceSrc : JDOM.attr('data-source'),
                 currentId : JDOM.attr('data-id'),
             };
-            _this.showMaskAndPopup(curObj);
-            _this.showPicAndSwitchBtn(curObj);
+            _this.showMaskAndPopup(curObj.currentId, curObj.sourceSrc);
+            _this.showNextPrevBtn(curObj.currentId);
 
         },
-        showMaskAndPopup (obj) {
+        showMaskAndPopup (id = 0, src) {
             let _this = this;
             //隐藏图片和caption区域
             _this.JDOM.popupPic.hide();
@@ -70,13 +70,35 @@
                 marginLeft: -(winW / 2 + 10) / 2,
                 top: -(winH / 2 + 10) ,
             }).animate({top: (winH / 2 + 10) / 2}, 'fast', function () {
-                console.log('加载图片');
+                _this.loadPic(src)
             });
         },
-        showPicAndSwitchBtn (obj) {
+        loadPic (src) {
+            let _this = this;
+            _this.preLoadPic(src, function() {
+                _this.JDOM.popupPic.attr('src', src);
+                let picW = _this.JDOM.popupPic.width(),
+                    picH = _this.JDOM.popupPic.height();
+                console.log(picW, picH);
+            });
+        },
+        preLoadPic (src, callback) {
+            let img = new Image();
+            if(!!window.ActiveXObject){
+                img.onreadystatechange = function () {
+                    if(this.readyState === 'complete') callback();
+                }
+            }else{
+                img.onload = function(){
+                    callback();
+                }
+            }
+            img.src = src;
+        },
+        showNextPrevBtn (id) {
             let _this = this;
 
-            _this.index = _this.getIndexOf(obj.currentId);
+            _this.index = _this.getIndexOf(id);
             console.log(_this.index);
 
             //判断是否展示上下切换按钮(先让按钮都显示出来)
@@ -96,7 +118,7 @@
         getJDOM () {
             return {
                 picViewArea: this.popupWin.find('div.lightbox-pic-view'),
-                popupPic: this.popupWin.find('img.lightbox-img'),
+                popupPic: this.popupWin.find('img.lightbox-image'),
                 picCaptionArea: this.popupWin.find('div.lightbox-pic-caption'),
                 nextBtn: this.popupWin.find('span.lightbox-next-btn'),
                 prevBtn: this.popupWin.find('span.lightbox-prev-btn'),
@@ -109,7 +131,7 @@
             let dom = `
                 <div class="lightbox-pic-view">
                     <span class="lightbox-btn lightbox-prev-btn lightbox-prev-btn-show"></span>
-                    <!--<img src="img/wallhaven-716979.jpg" width="100%" alt="" class="lightbox-image">-->
+                    <img alt="" class="lightbox-image">
                     <span class="lightbox-btn lightbox-next-btn lightbox-next-btn-show"></span>
                 </div>
                 <div class="lightbox-pic-caption">
