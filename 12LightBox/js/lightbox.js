@@ -79,8 +79,30 @@
                 _this.JDOM.popupPic.attr('src', src);
                 let picW = _this.JDOM.popupPic.width(),
                     picH = _this.JDOM.popupPic.height();
-                console.log(picW, picH);
+                _this.changePic(picW, picH);
             });
+        },
+        changePic (w, h) {
+            let _this = this;
+            let winW = $(window).width();
+            let winH = $(window).height();
+
+            let scale = Math.min(winW/(w + 10), winH/(h + 10), 1);
+            w *= scale;
+            h *= scale;
+
+            this.JDOM.picViewArea.animate({width: w - 10, height: h - 10});
+            this.popupWin.animate({
+                width: w,
+                height: h,
+                marginLeft: -(w / 2),
+                top: (winH - h) / 2,
+            },function () {
+                _this.JDOM.popupPic.css({width: w - 10, height: h - 10}).fadeIn();
+                _this.JDOM.picCaptionArea.fadeIn();
+            });
+            _this.JDOM.captionText.text(_this.groupData[_this.index].caption);
+            _this.JDOM.currentIndex.text(`当前索引：${_this.index + 1} / ${_this.groupData.length}`);
         },
         preLoadPic (src, callback) {
             let img = new Image();
@@ -122,7 +144,7 @@
                 picCaptionArea: this.popupWin.find('div.lightbox-pic-caption'),
                 nextBtn: this.popupWin.find('span.lightbox-next-btn'),
                 prevBtn: this.popupWin.find('span.lightbox-prev-btn'),
-                captionText: this.popupWin.find('p.lightbox-pic-des'),
+                captionText: this.popupWin.find('p.lightbox-pic-desc'),
                 currentIndex: this.popupWin.find('span.lightbox-of-index'),
                 closeBtn: this.popupWin.find('span.lightbox-close-btn'),
             };
