@@ -34,6 +34,15 @@
 
         });
 
+        this.popupMask.on('click', function () {
+            _this.popupMask.fadeOut();
+            _this.popupWin.fadeOut();
+        });
+
+        this.JDOM.closeBtn.on('click', function () {
+            _this.popupMask.fadeOut();
+            _this.popupWin.fadeOut();
+        });
 
     };
 
@@ -75,6 +84,7 @@
         },
         loadPic (src) {
             let _this = this;
+            _this.JDOM.popupPic.css({width: 'auto', height: 'auto'}).hide();
             _this.preLoadPic(src, function() {
                 _this.JDOM.popupPic.attr('src', src);
                 let picW = _this.JDOM.popupPic.width(),

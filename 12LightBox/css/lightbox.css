@@ -81,7 +81,10 @@
 .d-n{
     display: none;
 }
-
+.js-lightbox{
+    width: 100px;
+    height: 100px;
+}
 
 
 
