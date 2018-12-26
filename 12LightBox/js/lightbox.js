@@ -55,6 +55,9 @@
             e.stopPropagation();
         });
 
+        //当窗口发生变化时，调整弹出的size,这里略过不写了
+        //$(window).resize(function(){});
+
     };
 
     LightBox.prototype = {
