@@ -140,6 +140,8 @@
             _this.JDOM.currentIndex.text(`当前索引：${_this.index + 1} / ${_this.groupData.length}`);
         },
         preLoadPic (src, callback) {
+//             类似懒加载，obj为src为空的img元素，这样不去请求图片可以加快页面渲染速度。
+// 然后，再通过用没有挂载到dom树上的img对象向服务器请求图片。请求成功后图片会被缓存，这时再给真实img元素（obj）的src赋值就可以直接使用缓存的图片了。
             let img = new Image();
             if(!!window.ActiveXObject){
                 img.onreadystatechange = function () {
